@@ -1,33 +1,34 @@
 #This file is part internetdomain_alert module for Tryton.
 #The COPYRIGHT file at the top level of this repository contains 
 #the full copyright notices and license terms.
-
-from trytond.model import ModelView, ModelSQL, fields
 from trytond.tools import safe_eval, datetime_strftime
 from trytond.transaction import Transaction
-from trytond.pool import Pool
+from trytond.pool import Pool, PoolMeta
 
 import logging
 import time
 import datetime
 
-class Domain(ModelSQL, ModelView):
-    'Domain'
-    _name = 'internetdomain.domain'
+__all__ = ['Domain']
+__metaclass__ = PoolMeta
 
-    def generate_mail_alert(self):
+class Domain:
+    'Domain'
+    __name__ = 'internetdomain.domain'
+
+    @classmethod
+    def generate_mail_alert(cls):
         """
         Generate Mail alert from renewals expire date.
         """
         pool = Pool()
-        company_obj = pool.get('company.company')
-        template_obj = pool.get('electronic.mail.template')
-
+        Company = pool.get('company.company')
+        Template = pool.get('electronic.mail.template')
         cursor = Transaction().cursor
         context = Transaction().context.copy()
 
-        companies = company_obj.search(['active','=',True])
-        for company in company_obj.browse(companies):
+        companies = Company.search(['active','=',True])
+        for company in Company.browse(companies):
             if not company.idomain_template:
                 logging.getLogger('internetdomain').warning(
                     'Select template in this company.')
@@ -50,11 +51,9 @@ class Domain(ModelSQL, ModelView):
                     (date_expire,company.id))
                 res = cursor.fetchall()
                 ids = [r[0] for r in res]
-                for domain in self.browse(ids):
+                for domain in cls.browse(ids):
                     with Transaction().set_context(context):
-                        template_obj.render_and_send(company.idomain_template.id, [domain.id])
+                        Template.render_and_send(company.idomain_template.id, [domain])
                     logging.getLogger('internetdomain').info(
                         'Send email domain: %s' % domain.name)
         return True
-
-Domain()
