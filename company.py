@@ -3,7 +3,7 @@
 #the full copyright notices and license terms.
 from trytond.model import fields
 from trytond.pyson import Bool, Eval
-from trytond.pool import Pool, PoolMeta
+from trytond.pool import PoolMeta
 
 __all__ = ['Company']
 __metaclass__ = PoolMeta
