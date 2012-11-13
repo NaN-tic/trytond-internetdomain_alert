@@ -33,14 +33,14 @@ setup(name='trytonzz_internetdomain_alert',
     author='Zikzakmedia SL',
     author_email='zikzak@zikzakmedia.com',
     url='http://www.zikzakmedia.com',
-    download_url="https://bitbucket.org/zikzakmedia/trytonzz-internetdomain_alert",
-    package_dir={'trytonzz.modules.internetdomain_alert': '.'},
+    download_url="https://bitbucket.org/zikzakmedia/trytond-internetdomain_alert",
+    package_dir={'trytond.modules.internetdomain_alert': '.'},
     packages=[
-        'trytonzz.modules.internetdomain_alert',
-        'trytonzz.modules.internetdomain_alert.tests',
+        'trytond.modules.internetdomain_alert',
+        'trytond.modules.internetdomain_alert.tests',
     ],
     package_data={
-        'trytonzz.modules.internetdomain_alert': info.get('xml', []) \
+        'trytond.modules.internetdomain_alert': info.get('xml', []) \
             + ['tryton.cfg', 'locale/*.po'],
     },
     classifiers=[
@@ -63,9 +63,9 @@ setup(name='trytonzz_internetdomain_alert',
     install_requires=requires,
     zip_safe=False,
     entry_points="""
-    [trytonzz.modules]
-    internetdomain_alert = trytonzz.modules.internetdomain_alert
+    [trytond.modules]
+    internetdomain_alert = trytond.modules.internetdomain_alert
     """,
     test_suite='tests',
-    test_loader='trytonzz.test_loader:Loader',
+    test_loader='trytond.test_loader:Loader',
 )
