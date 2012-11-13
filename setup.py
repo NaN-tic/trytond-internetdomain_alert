@@ -27,20 +27,20 @@ for dep in info.get('depends', []):
 requires.append('trytond >= %s.%s, < %s.%s' %
         (major_version, minor_version, major_version, minor_version + 1))
 
-setup(name='trytond_internetdomain_alert',
+setup(name='trytonzz_internetdomain_alert',
     version=info.get('version', '0.0.1'),
     description='Tryton module for internet domain alert',
     author='Zikzakmedia SL',
     author_email='zikzak@zikzakmedia.com',
     url='http://www.zikzakmedia.com',
-    download_url="https://bitbucket.org/zikzakmedia/trytond-internetdomain_alert",
-    package_dir={'trytond.modules.internetdomain_alert': '.'},
+    download_url="https://bitbucket.org/zikzakmedia/trytonzz-internetdomain_alert",
+    package_dir={'trytonzz.modules.internetdomain_alert': '.'},
     packages=[
-        'trytond.modules.internetdomain_alert',
-        'trytond.modules.internetdomain_alert.tests',
+        'trytonzz.modules.internetdomain_alert',
+        'trytonzz.modules.internetdomain_alert.tests',
     ],
     package_data={
-        'trytond.modules.internetdomain_alert': info.get('xml', []) \
+        'trytonzz.modules.internetdomain_alert': info.get('xml', []) \
             + ['tryton.cfg', 'locale/*.po'],
     },
     classifiers=[
@@ -63,9 +63,9 @@ setup(name='trytond_internetdomain_alert',
     install_requires=requires,
     zip_safe=False,
     entry_points="""
-    [trytond.modules]
-    internetdomain_alert = trytond.modules.internetdomain_alert
+    [trytonzz.modules]
+    internetdomain_alert = trytonzz.modules.internetdomain_alert
     """,
     test_suite='tests',
-    test_loader='trytond.test_loader:Loader',
+    test_loader='trytonzz.test_loader:Loader',
 )
