@@ -9,8 +9,7 @@ The COPYRIGHT file at the top level of this repository contains the full copyrig
             <field name="signature"></field>
             <field name="active" eval="False"/>
         </record>
-        <record model="res.user-res.group"
-            id="user_generate_internetdomain_alert_group_stock">
+        <record model="res.user-res.group" id="user_generate_internetdomain_alert_group">
             <field name="user" ref="user_generate_internetdomain_alert"/>
             <field name="group" ref="internetdomain.group_internetdomain"/>
         </record>
