@@ -15,7 +15,7 @@ The COPYRIGHT file at the top level of this repository contains the full copyrig
         </record>
 
         <record model="ir.cron" id="cron_internetdomain_alert">
-            <field name="name">Generate Email Alerts from Internet Domain Renewals</field>
+            <field name="name">Email Alert Domains</field>
             <field name="request_user" ref="res.user_admin"/>
             <field name="user" ref="user_generate_internetdomain_alert"/>
             <field name="active" eval="True"/>
