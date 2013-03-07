@@ -10,8 +10,8 @@ la renovación del dominio.
 * Configure el planificador "Generar alertas de correos" para que se ejecute
   diariamente.
 
-Módulos que dependen
-====================
+Módulos de los que depende
+==========================
 
 Instalados
 ----------
