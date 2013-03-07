@@ -1,5 +1,5 @@
-HelloWord Module
-###############
+Internet Domain Alert Module
+############################
 
 The internetdomain_alert module send email when renewal domain is expired.
 
