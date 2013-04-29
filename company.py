@@ -17,5 +17,5 @@ class Company:
         states={
         'required': Bool(Eval('idomain')),
         },
-        depends=['vat_country'])
+        depends=['idomain'])
 
