@@ -32,7 +32,7 @@ class Domain:
                     'Select template in this company.')
                 return True
 
-            context['language'] = company.lang and company.lang.code or 'en_US'
+            context['language'] = company.party.lang and company.party.lang.code or 'en_US'
             idomain_alert_expire = company.idomain_alert_expire
             if not idomain_alert_expire:
                 days_alert = [30]  # 30 days; default
@@ -50,6 +50,8 @@ class Domain:
                 res = cursor.fetchall()
                 ids = [r[0] for r in res]
                 for domain in cls.browse(ids):
+                    if domain.party and domain.party.lang:
+                        context['language'] = domain.party.lang.code
                     with Transaction().set_context(context):
                         Template.render_and_send(company.idomain_template.id, [domain])
                     logging.getLogger('internetdomain').info(
