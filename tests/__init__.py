@@ -3,3 +3,5 @@
 #the full copyright notices and license terms.
 
 from .test_internetdomain_alert import suite
+
+__all__ = ['suite']
