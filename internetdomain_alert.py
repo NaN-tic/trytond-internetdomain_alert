@@ -26,10 +26,10 @@ class Domain:
         cursor = Transaction().cursor
         context = Transaction().context.copy()
 
-        for company in Company.search([('active', '=', True)]):
+        for company in Company.search([('idomain', '=', True)]):
             if not company.idomain_template:
                 logging.getLogger('internetdomain').warning(
-                    'Select template in this company.')
+                    'Select email template in company %s.' % (company.rec_name))
                 return True
 
             context['language'] = company.party.lang and company.party.lang.code or 'en_US'
