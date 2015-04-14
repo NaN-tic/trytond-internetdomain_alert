@@ -53,7 +53,7 @@ class Domain:
                     if domain.party and domain.party.lang:
                         context['language'] = domain.party.lang and domain.party.lang.code or lang
                     with Transaction().set_context(context):
-                        Template.render_and_send(company.idomain_template.id, [domain])
+                        Template.render_and_send(company.idomain_template, [domain])
                     logging.getLogger('internetdomain').info(
                         'Send email domain: %s' % domain.name)
         return True
