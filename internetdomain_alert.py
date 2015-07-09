@@ -22,7 +22,6 @@ class Domain:
         """
         pool = Pool()
         Company = pool.get('company.company')
-        Template = pool.get('electronic.mail.template')
         cursor = Transaction().cursor
         context = Transaction().context.copy()
 
@@ -53,7 +52,7 @@ class Domain:
                     if domain.party and domain.party.lang:
                         context['language'] = domain.party.lang and domain.party.lang.code or lang
                     with Transaction().set_context(context):
-                        Template.render_and_send(company.idomain_template.id, [domain])
+                        company.idomain_template.render_and_send([domain])
                     logging.getLogger('internetdomain').info(
                         'Send email domain: %s' % domain.name)
         return True
