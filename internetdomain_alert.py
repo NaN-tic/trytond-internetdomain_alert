@@ -3,16 +3,16 @@
 # the full copyright notices and license terms.
 from trytond.transaction import Transaction
 from trytond.pool import Pool, PoolMeta
-
 import logging
 import datetime
 
 __all__ = ['Domain']
 __metaclass__ = PoolMeta
 
+logger = logging.getLogger(__name__)
+
 
 class Domain:
-    'Domain'
     __name__ = 'internetdomain.domain'
 
     @classmethod
@@ -27,8 +27,8 @@ class Domain:
 
         for company in Company.search([('idomain', '=', True)]):
             if not company.idomain_template:
-                logging.getLogger('internetdomain').warning(
-                    'Select email template in company %s.' % (company.rec_name))
+                logger.warning('Select email template in company %s.' % (
+                    company.rec_name))
                 return True
 
             lang = company.party.lang and company.party.lang.code or 'en_US'
@@ -53,6 +53,5 @@ class Domain:
                         context['language'] = domain.party.lang and domain.party.lang.code or lang
                     with Transaction().set_context(context):
                         company.idomain_template.render_and_send([domain])
-                    logging.getLogger('internetdomain').info(
-                        'Send email domain: %s' % domain.name)
+                    logger.info('Send email domain: %s' % domain.name)
         return True
