@@ -11,8 +11,8 @@ msgid "Template"
 msgstr "Plantilla"
 
 msgctxt "model:ir.cron,name:cron_internetdomain_alert"
-msgid "Generate Email Alerts"
-msgstr "Genera alertes de correus"
+msgid "Email Alert Domains"
+msgstr "Correu alerta dominis"
 
 msgctxt "model:res.user,name:user_generate_internetdomain_alert"
 msgid "Cron Alert Internet Domain"
