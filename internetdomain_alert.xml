@@ -27,4 +27,9 @@ The COPYRIGHT file at the top level of this repository contains the full copyrig
             <field name="function">generate_mail_alert</field>
         </record>
     </data>
+    <data depends="activity" noupdate="1">
+        <record model="activity.reference" id="activity_reference_internetdomain">
+            <field name="model" search="[('model', '=', 'internetdomain.domain')]"/>
+        </record>
+    </data>
 </tryton>
