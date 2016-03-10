@@ -22,7 +22,7 @@ class Domain:
         """
         pool = Pool()
         Company = pool.get('company.company')
-        cursor = Transaction().cursor
+        cursor = Transaction().connection.cursor()
         context = Transaction().context.copy()
 
         for company in Company.search([('idomain', '=', True)]):
