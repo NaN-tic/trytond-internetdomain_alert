@@ -7,12 +7,12 @@ import logging
 import datetime
 
 __all__ = ['Domain']
-__metaclass__ = PoolMeta
 
 logger = logging.getLogger(__name__)
 
 
 class Domain:
+    __metaclass__ = PoolMeta
     __name__ = 'internetdomain.domain'
 
     @classmethod
